@@ -1,5 +1,5 @@
 <h2>
-  <%= number_to_currency(@product[:price_in_cents].to_f/100) %>
+  <%= @product.formatted_price %>
   <%= @product[:name] %>
 </h2>
 
