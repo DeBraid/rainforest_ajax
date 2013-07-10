@@ -1,0 +1,8 @@
+<h2>
+  <%= number_to_currency(@product[:price_in_cents].to_f/100) %>
+  <%= @product[:name] %>
+</h2>
+
+<%= link_to "Edit", edit_product_path(@product.id) %>
+
+<p><%= @product[:description] %></p>

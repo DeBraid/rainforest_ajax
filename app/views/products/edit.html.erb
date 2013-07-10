@@ -1,0 +1,24 @@
+<h1> Edit Product </h1>
+
+<%= form_for @product do |f| %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :price_in_cents, "Price (cents):" %>
+    <%= f.text_field :price_in_cents %>
+  </p>
+
+  <p>
+    <div class="form-label">
+      <%= f.label :description %>
+    </div>
+    <%= f.text_area :description %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>
