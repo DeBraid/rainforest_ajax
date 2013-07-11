@@ -11,9 +11,14 @@ RainforestInclass::Application.routes.draw do
   # post "/products" => "product#create"
 
 
-  resources :products
+  resources :products do
+    resources :reviews, :only => [:create]
+  end
 
   resources :users, :only => ["new", "create"]
+
+  resources :sessions, :only => ["new", "create"]
+  delete "/sessions" => "sessions#destroy"
 
 
   # The priority is based upon order of creation:
