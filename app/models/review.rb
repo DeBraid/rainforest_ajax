@@ -4,4 +4,7 @@ class Review < ActiveRecord::Base
 
   attr_accessible :comment
 
+  validates :user, :presence => true
+  validates :product, :presence => true
+
 end

@@ -2,14 +2,13 @@ RainforestInclass::Application.routes.draw do
 
   # This is equivelent to `resources :products`:
 
+  # get "/products/new" => "products#new", :as => "new_product"
   # get "/products/:id" => "products#show", :as => "product"
   # get "/products" => "products#index", :as => "products"
   # get "/products/:id/edit" => "products#edit", :as => "edit_product"
-  # get "/products/new" => "products#new", :as => "new_product"
   # put "/products/:id" => "products#update"
   # delete "/products/:id", "products#destroy"
   # post "/products" => "product#create"
-
 
   resources :products do
     resources :reviews, :only => [:create]

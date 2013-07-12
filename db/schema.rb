@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711211951) do
+ActiveRecord::Schema.define(:version => 20130712194334) do
 
   create_table "products", :force => true do |t|
     t.string  "name"
@@ -20,14 +20,17 @@ ActiveRecord::Schema.define(:version => 20130711211951) do
   end
 
   create_table "reviews", :force => true do |t|
-    t.integer "user_id"
-    t.integer "product_id"
-    t.text    "comment"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "username"
   end
 
 end
