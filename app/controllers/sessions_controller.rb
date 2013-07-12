@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     else
       @user = User.new params[:user]
       flash.now[:alert] = "bad username or password"
-      render :new
+      render :new, :status => 500
     end
   end
 
