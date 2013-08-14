@@ -8,6 +8,6 @@ class Product < ActiveRecord::Base
   has_many :reviews
 
   def formatted_price
-    "$#{(self[:price_in_cents].to_f/100)}"
+    "$#{sprintf('%.2f', (self[:price_in_cents].to_f/100))}"
   end
 end
