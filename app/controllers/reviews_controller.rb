@@ -12,9 +12,10 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to product_path(@product.id), notice: 'Review added.' }
-        format.js   {}
+        format.js {}
       else
         format.html { render "products/show", notice: 'There was an error in your review.'  }
+        format.js {}
       end
     end    
   end
