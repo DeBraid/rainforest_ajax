@@ -9,13 +9,14 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.build(params[:review])
     @review.user_id = current_user.id
 
-    if @review.save
-      flash[:notice] = "Review added!"
-      redirect_to product_path(@product.id)
-    else
-      flash.now[:alert] = "There was an error in your review. Stop haxoring our webs"
-      render "products/show"
-    end
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to product_path(@product.id), notice: 'Review added.' }
+        format.js   {}
+      else
+        format.html { render "products/show", notice: 'There was an error in your review.'  }
+      end
+    end    
   end
 
   protected

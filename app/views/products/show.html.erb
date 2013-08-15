@@ -7,7 +7,7 @@
 
 <p><%= @product[:description] %></p>
 
-<%= form_for [@product, @review] do |f| %>
+<%= form_for [@product, @review], :remote => true do |f| %>
 
   <p>
     <h3> Add a review </h3>
@@ -20,11 +20,9 @@
 
 <h3> Reviews </h3>
 
-<% @product.reviews.each do |review| %>
-  <div class="review">
-    <div class="poster">Posted by <%= review.user.username_string %> on <%= review.created_at %></div>
-    <p class="comment">
-    <%= review.comment %>
-    </p>
-  </div>
-<% end %>
+<div id="review-list">
+
+  <%= render :partial => "reviews" %>
+
+</div>
+
