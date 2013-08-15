@@ -7,16 +7,22 @@
 
 <p><%= @product[:description] %></p>
 
-<%= form_for [@product, @review], :remote => true do |f| %>
+<h3> Add a review </h3>
 
-  <p>
-    <h3> Add a review </h3>
-    <%= f.text_area :comment %>
-  </p>
+  <% if current_user %>
+    <%= form_for [@product, @review], :remote => true do |f| %>
 
-  <%= f.submit %>
+      <div id="review-form-errors">
+        <%= render :partial => "review_form_errors" %>
+      </div>
 
-<% end %>
+      <p><%= f.text_area :comment %></p>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <p><em>You must be logged in to post a review</em></p>
+  <% end %>
+
 
 <h3> Reviews </h3>
 
