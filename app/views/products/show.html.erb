@@ -9,20 +9,35 @@
 
 <h3> Add a review </h3>
 
-  <% if current_user %>
-    <%= form_for [@product, @review], :remote => true do |f| %>
+<% if current_user %>
+  <%= form_for [@product, @review], :remote => true do |f| %>
 
-      <div id="review-form-errors">
-        <%= render :partial => "review_form_errors" %>
-      </div>
+    <div id="review-form-errors">
+      <%= render :partial => "review_form_errors" %>
+    </div>
 
-      <p><%= f.text_area :comment %></p>
-      <%= f.submit %>
-    <% end %>
-  <% else %>
-    <p><em>You must be logged in to post a review</em></p>
+    <p><%= f.text_area :comment %></p>
+    <%= f.submit %>
   <% end %>
+<% else %>
+  <p><em>You must be logged in to post a review</em></p>
+<% end %>
 
+<script type="text/javascript">
+  $(function() {
+     $("#new_review")
+        .bind('ajax:beforeSend', function() {
+          $("input[type='submit']")
+            .val('Saving...')
+            .attr('disabled', 'disabled');
+        })
+        .bind('ajax:complete', function() {
+          $("input[type='submit']")
+            .val('Create Review')
+            .removeAttr('disabled');
+        });
+  });
+</script>
 
 <h3> Reviews </h3>
 
@@ -31,4 +46,3 @@
   <%= render :partial => "reviews" %>
 
 </div>
-
