@@ -11,12 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712194334) do
+ActiveRecord::Schema.define(:version => 20130920150303) do
 
   create_table "products", :force => true do |t|
-    t.string  "name"
-    t.text    "description",    :limit => 255
-    t.integer "price_in_cents"
+    t.string   "name"
+    t.text     "description",    :limit => 255
+    t.integer  "price_in_cents"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", :force => true do |t|

@@ -16,3 +16,9 @@
 {
   color: red;
 }
+
+.pagination li {
+  float: left;
+  margin: 10px 20px;
+  list-style: none;
+}
