@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
     @products = Product.order('products.created_at DESC').page(params[:page])
 
     respond_to do |format|
+      format.js
       format.html
       format.json { render json: @products }
     end

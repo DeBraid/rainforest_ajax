@@ -13,3 +13,38 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// jQuery(function() {
+//   return $(window).scroll(function() {
+//     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+//       return alert('near bottom');
+//     }
+//   });
+// });
+
+
+// jQuery(function() {
+//   return $(window).scroll(function() {
+//     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+//       console.log($('.pagination li').eq(-2).children().attr('href'));
+//       $.getScript($('.pagination li').eq(-2).children().attr('href'));
+//     }
+//   });
+// });
+
+
+jQuery(function() {
+  if ($('.pagination').length) {
+    $(window).scroll(function() {
+      var url;
+      url = $('.pagination li').eq(-2).children().attr('href');
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+        $('.pagination').text("Fetching more products...");
+        return $.getScript(url);
+      }
+    });
+    return $(window).scroll();
+  }
+});
+
+
